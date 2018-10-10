@@ -1,0 +1,180 @@
+#N canvas 894 154 935 900 10;
+#X obj 42 381 cyclone/coll;
+#C restore;
+#X obj 42 439 cyclone/thresh;
+#X obj 85 257 + 1;
+#X obj 40 195 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 40 260 i 1;
+#X obj 40 104 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 87 191 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 87 220 1;
+#X obj 40 291 pack 0 0;
+#X msg 343 311 dump, f 8;
+#X msg 185 94 2 22;
+#X obj 42 470 cyclone/prepend 126 6 58 0 0;
+#X obj 43 529 cyclone/append 231;
+#X obj 43 628 s rawDMX;
+#X obj 40 164 cyclone/uzi 57;
+#X obj 40 70 loadbang;
+#X obj 344 221 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 40 133 t b b;
+#X msg 70 330 clear;
+#X msg 344 81 1;
+#X obj 389 114 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 392 189 0;
+#X obj 185 128 s DMXaddr;
+#X obj 183 158 r DMXaddr;
+#X obj 343 49 r DMXaddr;
+#X obj 390 156 delay 3000;
+#X obj 184 187 t b l;
+#X obj 344 250 metro 50, f 11;
+#N canvas 617 256 1082 446 DMXaltTest 0;
+#X obj 261 331 t b l;
+#X obj 248 105 r DMXaddr;
+#X obj 129 659 print test;
+#X obj 75 516 route 1 2 3 4 5;
+#X obj 43 565 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 197 515 route 6 7 8 9 10;
+#X obj 197 515 route 6 7 8 9 10;
+#X obj 325 515 route 11 12 13 14 15;
+#X obj 47 310 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 47 137 1;
+#X obj 92 170 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 95 245 0;
+#X obj 46 89 r DMXaddr;
+#X obj 93 212 delay 3000;
+#X obj 396 324 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 86 320 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 44 603 pack 126 6 58 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 231, f 222;
+#X obj 98 696 s rawDMX;
+#X msg 491 172 1;
+#X obj 536 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 539 280 0;
+#X obj 490 129 r DMXaddr;
+#X obj 537 247 delay 3000;
+#X obj 487 402 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 544 322 int;
+#X obj 560 366 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 723 179 1;
+#X obj 768 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 722 136 r DMXaddr;
+#X obj 769 254 delay 3000;
+#X obj 535 394 select 1;
+#X obj 492 320 != 5;
+#X obj 47 277 tDiff;
+#X obj 482 515 route 16 17 18 19 20;
+#X obj 634 514 route 21 22 23 24 25;
+#X obj 46 346 metro 25, f 11;
+#X connect 0 1 3 0;
+#X connect 0 1 5 0;
+#X connect 0 1 7 0;
+#X connect 0 1 33 0;
+#X connect 0 1 34 0;
+#X connect 1 0 14 0;
+#X connect 1 0 0 0;
+#X connect 3 0 16 5;
+#X connect 3 1 16 6;
+#X connect 3 2 16 7;
+#X connect 3 3 16 8;
+#X connect 3 4 16 9;
+#X connect 4 0 16 0;
+#X connect 5 0 16 10;
+#X connect 5 1 16 11;
+#X connect 5 2 16 12;
+#X connect 5 3 16 13;
+#X connect 5 4 16 14;
+#X connect 7 0 16 15;
+#X connect 7 1 16 16;
+#X connect 7 2 16 17;
+#X connect 7 3 16 18;
+#X connect 7 4 16 19;
+#X connect 8 0 15 0;
+#X connect 8 0 35 0;
+#X connect 9 0 10 0;
+#X connect 9 0 32 0;
+#X connect 10 0 13 0;
+#X connect 11 0 32 0;
+#X connect 12 0 9 0;
+#X connect 13 0 11 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;
+#X connect 18 0 24 1;
+#X connect 18 0 31 0;
+#X connect 19 0 22 0;
+#X connect 20 0 24 1;
+#X connect 20 0 31 0;
+#X connect 21 0 18 0;
+#X connect 22 0 20 0;
+#X connect 23 0 8 0;
+#X connect 24 0 23 0;
+#X connect 24 0 31 1;
+#X connect 25 0 24 0;
+#X connect 26 0 27 0;
+#X connect 27 0 29 0;
+#X connect 28 0 26 0;
+#X connect 30 0 25 0;
+#X connect 31 0 30 0;
+#X connect 33 0 16 20;
+#X connect 33 1 16 21;
+#X connect 33 2 16 22;
+#X connect 33 3 16 23;
+#X connect 33 4 16 24;
+#X connect 34 0 16 25;
+#X connect 34 1 16 26;
+#X connect 34 2 16 27;
+#X connect 34 3 16 28;
+#X connect 34 4 16 29;
+#X connect 35 0 4 0;
+#X restore 335 446 pd DMXaltTest;
+#X obj 127 587 prepend set;
+#X msg 127 626 126 6 58 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 231;
+#X obj 45 698 outlet;
+#X obj 45 660 r rawDMX;
+#X connect 0 0 1 0;
+#X connect 1 0 11 0;
+#X connect 2 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 4 0 8 0;
+#X connect 5 0 17 0;
+#X connect 6 0 7 0;
+#X connect 7 0 4 1;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 22 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 12 0 29 0;
+#X connect 14 0 3 0;
+#X connect 14 1 6 0;
+#X connect 15 0 5 0;
+#X connect 16 0 27 0;
+#X connect 17 0 14 0;
+#X connect 17 1 18 0;
+#X connect 18 0 0 0;
+#X connect 19 0 16 0;
+#X connect 19 0 20 0;
+#X connect 20 0 25 0;
+#X connect 21 0 16 0;
+#X connect 23 0 26 0;
+#X connect 25 0 21 0;
+#X connect 27 0 9 0;
+#X connect 32 0 31 0;

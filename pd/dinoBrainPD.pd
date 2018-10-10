@@ -1,0 +1,50 @@
+#N canvas 1139 149 591 368 10;
+#X obj 17 178 dinoDMXsend;
+#X obj 19 25 compOSCreceive;
+#X obj 139 23 r rawDMX;
+#X msg 219 84 126 6 58 0 0 255 255 0 0 0 0 0 0 0 0 255 255 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 231, f 24;
+#X obj 17 127 DMXprocess;
+#X obj 19 89 motorLogic;
+#X obj 19 56 positionLogic;
+#X obj 219 57 prepend set;
+#X obj 467 182 s motorsOn;
+#X obj 467 109 tgl 40 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 139 90 spigot;
+#X obj 219 23 r rawDMX;
+#X obj 178 57 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 2 101 450 300 calibration 0;
+#X restore 468 216 pd calibration;
+#X obj 17 207 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 139 127 s print;
+#X obj 31 155 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 529 557 1313 478 startUp 0;
+#X obj 86 39 loadbang;
+#X msg 86 101 1;
+#X obj 86 165 s yPos;
+#X obj 166 39 loadbang;
+#X msg 166 101 0;
+#X obj 166 165 s xPos;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X restore 325 22 pd startUp;
+#X obj 467 21 r motorsOn;
+#X obj 467 62 prepend set;
+#X connect 0 0 14 0;
+#X connect 2 0 10 0;
+#X connect 4 0 0 0;
+#X connect 4 0 16 0;
+#X connect 7 0 3 0;
+#X connect 9 0 8 0;
+#X connect 10 0 15 0;
+#X connect 11 0 7 0;
+#X connect 12 0 10 1;
+#X connect 18 0 19 0;
+#X connect 19 0 9 0;
