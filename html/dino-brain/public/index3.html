@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dino-brain</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.kontrol.js"></script>
+	<!-- <script type="text/javascript" src="js/socket.js"></script> -->
+
+	<!-- <script src="http://192.168.8.50:8081/socket.io/socket.io.js"></script> -->
+	<!-- <script src="/socket.io/socket.io.js"></script> -->
+	
+
+</head>
+<body style=" background-color: black;">
+	<h2 style="font-family: arial; color:  white;">DINO CONTROL BETA</h2>
+	<!-- <div style="background-color:blue; width:300px; height:300px;" id="xyPad2"></div> -->
+
+	<div style="float:left;width:200px;padding:30px">
+                <!-- <div style="margin-bottom:10px">XY</div> -->
+                <fieldset id="xyPad" class="pad" data-width="200" data-height="200">
+                    <legend>XY Pad</legend>
+                    x : <input name="x" value=0>
+                    y : <input name="y" value=100>
+                </fieldset>
+	</div>
+	
+	<div id="status"></div>
+	
+	<script src="/socket.io/socket.io.js"></script>
+
+  <script type="text/javascript" src="js/script.js"></script>
+
+	<script>
+		
+	   // socket = io.connect('192.168.8.50', { port: 8081, rememberTransport: false});
+	   /*socket = io.connect('192.168.8.50');
+	   console.log('oi');
+	   socket.on('connect', function() {
+			// sends to socket.io server the host/port of oscServer
+			// and oscClient
+			socket.emit('config',
+				{
+					server: {
+						port: 3333,
+						host: '192.168.8.50'
+					},
+					client: {
+						port: 3334,
+						host: '192.168.8.50'
+					}
+				}
+			);
+		});*/
+
+		/*socket.on('message', function(obj) {
+			var status = document.getElementById("status");
+			status.innerHTML = obj[0];
+			console.log(obj);
+		});*/
+
+		/*function oscSend(key, value){
+			socket.emit(key, value);
+		};*/
+
+	$(function($) {
+
+	});
+
+
+		
+	</script>
+
+</body>
+</html>
+
