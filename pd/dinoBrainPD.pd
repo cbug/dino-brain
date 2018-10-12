@@ -1,10 +1,10 @@
-#N canvas 1136 167 591 368 10;
+#N canvas 1183 108 602 368 10;
 #X obj 17 178 dinoDMXsend;
 #X obj 19 25 compOSCreceive;
 #X obj 139 23 r rawDMX;
-#X msg 219 84 126 6 58 0 0 255 255 0 0 0 0 0 0 0 0 255 255 0 0 0 0
+#X msg 219 84 126 6 58 0 0 238 30 0 0 0 0 0 0 0 0 252 238 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 231, f 24;
+0 0 0 0 0 0 231, f 24;
 #X obj 17 127 DMXprocess;
 #X obj 19 89 motorLogic;
 #X obj 19 56 positionLogic;

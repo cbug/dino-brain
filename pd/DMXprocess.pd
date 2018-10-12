@@ -1,4 +1,4 @@
-#N canvas 894 154 935 900 10;
+#N canvas 757 125 633 775 10;
 #X obj 42 381 cyclone/coll;
 #C restore;
 #X obj 42 439 cyclone/thresh;

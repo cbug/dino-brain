@@ -1,4 +1,4 @@
-#N canvas 32 171 1006 761 10;
+#N canvas 29 189 1006 761 10;
 #X obj 7 23 udpreceive 1999;
 #X obj 9 59 unpackOSC;
 #X obj 7 90 routeOSC /rawDMX;
@@ -47,32 +47,43 @@
 1;
 #X obj 56 471 udpreceive 3334;
 #X obj 145 595 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
+-262144 -1 -1 -22 256;
 #X obj 308 601 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
+-262144 -1 -1 -17 256;
 #X obj 146 534 routeOSC /x /y /xy;
-#X msg 377 596 -67 13, f 25;
+#X msg 377 596 -22 -17, f 25;
 #X obj 146 640 cyclone/scale -100 100 -0.5 0.5;
 #X obj 148 678 s xPos;
 #X obj 379 688 s yPos;
 #X obj 662 369 packOSC;
 #X obj 660 497 udpsend;
 #X obj 662 255 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
+-262144 -1 -1 -0.11 256;
 #X msg 687 428 connect localhost 3333;
 #X msg 728 469 disconnect;
 #X obj 662 191 r xPos;
 #X obj 779 254 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0.5 256;
+-262144 -1 -1 -0.085 256;
 #X obj 773 192 r yPos;
 #X obj 376 641 cyclone/scale -100 100 0 1;
 #X obj 777 225 cyclone/scale 0 1 -0.5 0.5;
-#X obj 747 389 loadbang;
+#X obj 761 353 loadbang;
 #X obj 7 127 cyclone/prepend set;
 #X obj 662 303 cyclone/prepend /xPos;
 #X obj 830 304 cyclone/prepend /yPos;
 #X obj 378 567 cyclone/prepend set;
 #X text 55 441 From local web interface;
+#X obj 836 402 metro 5000;
+#X obj 663 543 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 659 574 select 0 1;
+#X obj 836 379 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 659 607 1;
+#X msg 698 609 0;
+#X obj 656 644 s toNetMet;
+#X obj 836 345 r toNetMet;
+#X text 659 151 To local web interface;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
@@ -111,6 +122,7 @@
 #X connect 38 2 57 0;
 #X connect 40 0 41 0;
 #X connect 43 0 44 0;
+#X connect 44 0 60 0;
 #X connect 45 0 55 0;
 #X connect 46 0 44 0;
 #X connect 47 0 44 0;
@@ -124,3 +136,11 @@
 #X connect 55 0 43 0;
 #X connect 56 0 43 0;
 #X connect 57 0 39 0;
+#X connect 59 0 46 0;
+#X connect 60 0 61 0;
+#X connect 61 0 63 0;
+#X connect 61 1 64 0;
+#X connect 62 0 59 0;
+#X connect 63 0 65 0;
+#X connect 64 0 65 0;
+#X connect 66 0 62 0;
