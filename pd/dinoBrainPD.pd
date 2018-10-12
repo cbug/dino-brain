@@ -1,4 +1,4 @@
-#N canvas 1139 149 591 368 10;
+#N canvas 1136 167 591 368 10;
 #X obj 17 178 dinoDMXsend;
 #X obj 19 25 compOSCreceive;
 #X obj 139 23 r rawDMX;
@@ -37,6 +37,7 @@
 #X restore 325 22 pd startUp;
 #X obj 467 21 r motorsOn;
 #X obj 467 62 prepend set;
+#X obj 21 251 automation;
 #X connect 0 0 14 0;
 #X connect 2 0 10 0;
 #X connect 4 0 0 0;
