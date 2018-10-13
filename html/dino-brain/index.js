@@ -23,6 +23,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 var numUsers = 0;
 
 io.on('connection', (socket) => {
+
+  console.log('client connected');
+
+  oscClient.send('/getPos', 1);
+
   var addedUser = false;
 
 
@@ -56,6 +61,30 @@ io.on('connection', (socket) => {
       message: data
     });
     oscClient.send('/status', 'test');
+
+  });
+
+  socket.on('motorsOnOff', (data) => {
+
+    console.log('motorsOnOff '+data);
+    
+    oscClient.send('/motorsOnOff', data);
+
+  });
+
+  socket.on('center', (data) => {
+
+    console.log('center '+data);
+    
+    oscClient.send('/center', data);
+
+  });
+
+  socket.on('top', (data) => {
+
+    console.log('top '+data);
+    
+    oscClient.send('/top', data);
 
   });
 

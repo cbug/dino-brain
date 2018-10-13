@@ -1,4 +1,4 @@
-#N canvas 29 189 1006 761 10;
+#N canvas 54 99 1116 912 10;
 #X obj 7 23 udpreceive 1999;
 #X obj 9 59 unpackOSC;
 #X obj 7 90 routeOSC /rawDMX;
@@ -35,55 +35,91 @@
 #X obj 260 145 spigot;
 #X obj 302 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 56 506 unpackOSC;
-#X obj 54 679 print;
-#X obj 54 627 spigot;
-#X obj 96 584 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 44 589 unpackOSC;
+#X obj 42 762 print;
+#X obj 42 710 spigot;
+#X obj 84 667 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 56 506 unpackOSC;
-#X obj 54 679 print;
-#X obj 54 627 spigot;
-#X obj 96 584 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 44 589 unpackOSC;
+#X obj 42 762 print;
+#X obj 42 710 spigot;
+#X obj 84 667 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 56 471 udpreceive 3334;
-#X obj 145 595 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -22 256;
-#X obj 308 601 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -17 256;
-#X obj 146 534 routeOSC /x /y /xy;
-#X msg 377 596 -22 -17, f 25;
-#X obj 146 640 cyclone/scale -100 100 -0.5 0.5;
-#X obj 148 678 s xPos;
-#X obj 379 688 s yPos;
-#X obj 662 369 packOSC;
-#X obj 660 497 udpsend;
-#X obj 662 255 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -0.11 256;
-#X msg 687 428 connect localhost 3333;
-#X msg 728 469 disconnect;
-#X obj 662 191 r xPos;
-#X obj 779 254 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -0.085 256;
-#X obj 773 192 r yPos;
-#X obj 376 641 cyclone/scale -100 100 0 1;
-#X obj 777 225 cyclone/scale 0 1 -0.5 0.5;
-#X obj 761 353 loadbang;
+#X obj 44 554 udpreceive 3334;
+#X obj 133 678 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 77 256;
+#X obj 296 684 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 -11 256;
+#X obj 134 617 routeOSC /x /y /xy;
+#X msg 365 679 77 -11, f 25;
+#X obj 134 723 cyclone/scale -100 100 -0.5 0.5;
+#X obj 136 761 s xPos;
+#X obj 367 771 s yPos;
+#X obj 665 233 packOSC;
+#X obj 663 361 udpsend;
+#X obj 665 119 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0.385 256;
+#X msg 690 292 connect localhost 3333;
+#X msg 731 333 disconnect;
+#X obj 665 55 r xPos;
+#X obj 782 118 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 -0.055 256;
+#X obj 776 56 r yPos;
+#X obj 364 724 cyclone/scale -100 100 0 1;
+#X obj 780 89 cyclone/scale 0 1 -0.5 0.5;
+#X obj 764 217 loadbang;
 #X obj 7 127 cyclone/prepend set;
-#X obj 662 303 cyclone/prepend /xPos;
-#X obj 830 304 cyclone/prepend /yPos;
-#X obj 378 567 cyclone/prepend set;
-#X text 55 441 From local web interface;
-#X obj 836 402 metro 5000;
-#X obj 663 543 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 665 167 cyclone/prepend /xPos;
+#X obj 833 168 cyclone/prepend /yPos;
+#X obj 366 650 cyclone/prepend set;
+#X text 43 524 From local web interface;
+#X obj 839 266 metro 5000;
+#X obj 666 407 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 659 574 select 0 1;
-#X obj 836 379 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 662 438 select 0 1;
+#X obj 839 243 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 659 607 1;
-#X msg 698 609 0;
-#X obj 656 644 s toNetMet;
-#X obj 836 345 r toNetMet;
-#X text 659 151 To local web interface;
+#X msg 662 471 1;
+#X msg 701 473 0;
+#X obj 659 508 s toNetMet;
+#X obj 839 209 r toNetMet;
+#X text 662 15 To local web interface;
+#X obj 585 647 tgl 40 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 585 704 s motorsOn;
+#X obj 668 647 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 751 645 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 668 703 0;
+#X msg 751 702 1;
+#X obj 751 758 s yPos;
+#X obj 668 757 s xPos;
+#X obj 834 646 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 585 609 routeOSC /motorsOnOff /center /top /getPos, f 48;
+#N canvas 2 59 450 300 getPos 0;
+#X obj 34 18 inlet;
+#X obj 34 61 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 110 19 r xPos;
+#X obj 110 55 prepend set;
+#X floatatom 110 95 5 0 0 0 - - -, f 5;
+#X obj 110 135 s xPos;
+#X obj 203 55 prepend set;
+#X floatatom 203 95 5 0 0 0 - - -, f 5;
+#X obj 203 19 r yPos;
+#X obj 203 135 s yPos;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 8 0 6 0;
+#X restore 834 759 pd getPos;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
@@ -110,6 +146,7 @@
 #X connect 26 0 25 1;
 #X connect 27 0 28 0;
 #X connect 27 0 38 0;
+#X connect 27 0 77 0;
 #X connect 29 0 28 0;
 #X connect 30 0 29 1;
 #X connect 33 0 32 0;
@@ -144,3 +181,13 @@
 #X connect 63 0 65 0;
 #X connect 64 0 65 0;
 #X connect 66 0 62 0;
+#X connect 68 0 69 0;
+#X connect 70 0 72 0;
+#X connect 71 0 73 0;
+#X connect 72 0 75 0;
+#X connect 73 0 74 0;
+#X connect 76 0 78 0;
+#X connect 77 0 68 0;
+#X connect 77 1 70 0;
+#X connect 77 2 71 0;
+#X connect 77 3 76 0;
