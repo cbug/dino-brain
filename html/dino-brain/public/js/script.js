@@ -69,7 +69,7 @@ $(function($) {
         switch(addr){
             case '/xPos':
 
-                console.log('x '+ data[1]);
+                // console.log('x '+ data[1]);
 
                 var x = data[1] * 200;
 
@@ -81,7 +81,7 @@ $(function($) {
 
             case '/yPos':
 
-                console.log('y '+ data[1]);
+                // console.log('y '+ data[1]);
 
                 var y = data[1] * 200;
                 

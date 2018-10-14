@@ -1,0 +1,23 @@
+
+Network
+		IP: 192.168.8.50
+		MAC: b8:27:eb:70:93:ed
+
+		/boot/cmdline.txt
+		smsc95xx.macaddr=b8:27:eb:70:93:ed
+
+
+PD
+
+		Dependencies:
+
+			zexy
+			mrpeach
+			osc
+
+		Startup flags: 
+
+				-lib zexy -lib cyclone
+
+
+Node.js
