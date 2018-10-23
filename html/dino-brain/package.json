@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "dino-brain local web interface",
   "main": "index.js",
-  "author": "Grant Timmerman",
+  "author": "Chas Llewellyn",
   "private": true,
-  "license": "BSD",
+  "license": "",
   "dependencies": {
     "node-osc": "0.2.x",
     "express": "4.15.2",

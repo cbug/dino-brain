@@ -21,3 +21,10 @@ PD
 
 
 Node.js
+
+
+startup scripts
+
+pd -nogui /home/pi/Documents/dino-brain/pd/dinoBrainPD.pd
+
+sudo node /var/www/html/
