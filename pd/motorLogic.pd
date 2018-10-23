@@ -1,13 +1,13 @@
-#N canvas 72 103 1096 876 10;
+#N canvas 74 115 1096 876 10;
 #X obj 67 519 16bit, f 11;
 #X obj 67 367 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 11786 1;
 #X obj 67 561 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 11804 1;
 #X obj 141 563 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 7172 1;
 #X obj 67 125 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 67 72 r leftPos;
 #X obj 67 267 scale 0 1 0.9 1;
 #X obj 105 299 r leftPosAbs;
@@ -18,7 +18,7 @@
 #X obj 160 72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 31 58 prepend set;
-#X msg 31 118 1;
+#X msg 31 118 0.928;
 #X msg 168 212 1;
 #X obj 170 142 prepend set;
 #X obj 217 175 loadbang;
@@ -33,7 +33,7 @@
 #X connect 8 0 6 0;
 #X restore 148 241 pd ul;
 #X obj 67 328 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 1 256;
+-262144 -1 -1 0.928 256;
 #N canvas 733 434 450 300 ll 0;
 #X obj 31 20 inlet;
 #X obj 34 258 outlet;
@@ -44,7 +44,7 @@
 #X obj 170 142 prepend set;
 #X obj 217 175 loadbang;
 #X obj 161 17 r setLowLeftLim;
-#X msg 31 118 1;
+#X msg 31 118 0.928;
 #X connect 0 0 3 0;
 #X connect 2 0 8 0;
 #X connect 3 0 8 0;
@@ -99,17 +99,17 @@
 #X obj 254 723 + 2;
 #X obj 472 518 16bit, f 11;
 #X obj 472 366 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 12384 1;
 #X obj 472 560 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 12401 1;
 #X obj 546 562 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 7969 1;
 #X obj 472 124 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 7684 1;
 #X obj 472 266 scale 0 1 0.9 1;
 #X obj 510 298 r leftPosAbs;
 #X obj 472 327 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 1 256;
+-262144 -1 -1 0.975115 256;
 #N canvas 2 95 450 300 (subpatch) 0;
 #X obj 49 53 inlet;
 #X obj 171 53 inlet;
@@ -158,7 +158,7 @@
 #X obj 31 58 prepend set;
 #X obj 170 142 prepend set;
 #X obj 217 175 loadbang;
-#X msg 31 118 1;
+#X msg 31 118 0.975115;
 #X obj 160 21 r setLowRightLim;
 #X msg 168 212 0.937;
 #X connect 0 0 3 0;
@@ -177,7 +177,7 @@
 #X obj 160 72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 31 58 prepend set;
-#X msg 31 118 1;
+#X msg 31 118 0.975115;
 #X msg 168 212 1;
 #X obj 170 142 prepend set;
 #X obj 217 175 loadbang;
