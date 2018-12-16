@@ -1,10 +1,10 @@
-#N canvas 53 105 1116 912 10;
+#N canvas 64 128 1716 912 10;
 #X obj 7 23 udpreceive 1999;
 #X obj 9 59 unpackOSC;
 #X obj 7 90 routeOSC /rawDMX;
-#X msg 7 164 126 6 58 0 0 247 135 255 0 0 0 0 0 0 0 242 77 255 0 0
+#X msg 7 164 126 6 58 0 0 255 255 0 0 0 0 0 0 0 0 245 218 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 231, f 24;
+0 0 0 0 0 0 231, f 24;
 #X obj 159 127 s rawDMX;
 #X obj 297 19 udpreceive 7400;
 #X obj 294 53 unpackOSC;
@@ -47,30 +47,30 @@
 1;
 #X obj 44 554 udpreceive 3334;
 #X obj 133 678 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -4 256;
+-262144 -1 -1 0 256;
 #X obj 296 684 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -9 256;
-#X obj 134 617 routeOSC /x /y /xy;
-#X msg 365 679 -4 -9, f 25;
+-262144 -1 -1 0 256;
+#X obj 136 634 routeOSC /x /y /xy;
+#X msg 365 679 -12 100, f 25;
 #X obj 134 723 cyclone/scale -100 100 -0.5 0.5;
 #X obj 136 761 s xPos;
 #X obj 367 771 s yPos;
 #X obj 665 233 packOSC;
 #X obj 663 361 udpsend;
 #X obj 665 119 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -0.02 256;
+-262144 -1 -1 0 256;
 #X msg 690 292 connect localhost 3333;
 #X msg 731 333 disconnect;
 #X obj 665 55 r xPos;
 #X obj 782 118 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -0.045 256;
+-262144 -1 -1 0.5 256;
 #X obj 776 56 r yPos;
 #X obj 364 724 cyclone/scale -100 100 0 1;
 #X obj 780 89 cyclone/scale 0 1 -0.5 0.5;
-#X obj 764 217 loadbang;
+#X obj 692 261 loadbang;
 #X obj 7 127 cyclone/prepend set;
 #X obj 665 167 cyclone/prepend /xPos;
-#X obj 833 168 cyclone/prepend /yPos;
+#X obj 825 167 cyclone/prepend /yPos;
 #X obj 366 650 cyclone/prepend set;
 #X text 43 524 From local web interface;
 #X obj 839 266 metro 5000;
@@ -97,7 +97,6 @@
 #X obj 668 757 s xPos;
 #X obj 834 646 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 585 609 routeOSC /motorsOnOff /center /top /getPos, f 48;
 #N canvas 2 59 450 300 getPos 0;
 #X obj 34 18 inlet;
 #X obj 34 61 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -120,6 +119,233 @@
 #X connect 7 0 9 0;
 #X connect 8 0 6 0;
 #X restore 834 759 pd getPos;
+#X obj 1033 645 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1116 643 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1199 644 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 952 642 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1115 699 s seqStart;
+#X obj 1210 699 s seqStop;
+#X obj 1033 723 s sequenceRecStop;
+#X obj 950 757 s sequenceRecStart;
+#X obj 1099 266 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 1102 322 * 5;
+#X obj 1103 386 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 1273 649 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 1280 716 s currentSequence;
+#X obj 983 166 cyclone/prepend /seqNum;
+#X obj 983 96 r currentSequence;
+#X obj 1353 652 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1438 654 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1353 682 s nextSequence;
+#X obj 1450 710 s prevSequence;
+#X obj 1163 126 r seqEnd;
+#X obj 1163 165 cyclone/prepend /seqComplete;
+#X obj 1518 650 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1519 680 s saveSequence;
+#X obj 1374 68 r seqSaved;
+#X obj 1374 165 cyclone/prepend /seqSaved;
+#X obj 1374 99 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 951 607 routeOSC /recStart /recStop /seqStart /seqStop /seqNum
+/nextSeq /prevSeq /saveSeq /getCurSeq, f 93;
+#X obj 985 133 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 1 256;
+#X obj 1564 710 s getCurSeq;
+#X obj 1558 647 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1126 68 r getCurSeq;
+#X obj 1132 99 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1411 100 prepend set;
+#X msg 1410 136 1;
+#X obj 752 673 s homePos;
+#X obj 586 609 routeOSC /motorsOnOff /center /homePos /getPos, f 48
+;
+#X obj 132 789 routeOSC /systemShutdown;
+#X obj 137 827 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 2 71 450 300 systemShutdown 0;
+#X obj 41 130 print;
+#X obj 41 89 shell;
+#X obj 44 18 inlet;
+#X msg 44 57 sudo halt;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 134 856 pd systemShutdown;
+#N canvas 2 65 1476 546 settings 1;
+#X obj 53 48 inlet;
+#X obj 53 107 routeOSC /autoEnabled;
+#X obj 72 220 s storeSetting;
+#X obj 53 142 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 1 256;
+#X obj 53 261 s automationEnabled;
+#X obj 230 219 s storeSetting;
+#X obj 211 141 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 11 256;
+#X obj 211 106 routeOSC /autoStartTime;
+#X obj 209 260 s automationStartTime;
+#X obj 405 218 s storeSetting;
+#X obj 386 140 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 16 256;
+#X obj 386 105 routeOSC /autoEndTime;
+#X obj 384 259 s automationEndTime;
+#X msg 230 180 autoStartTime \$1;
+#X msg 71 181 autoEnabled \$1;
+#X msg 405 179 autoEndTime \$1;
+#X obj 571 217 s storeSetting;
+#X obj 552 139 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 741 215 s storeSetting;
+#X obj 722 137 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 935 214 s storeSetting;
+#X obj 915 142 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 552 104 routeOSC /autoInterval;
+#X msg 571 178 autoInterval \$1;
+#X obj 550 258 s automationInterval;
+#X obj 722 102 routeOSC /autoStartSeq;
+#X msg 741 176 autoStartSeq \$1;
+#X obj 720 256 s automationStartSeq;
+#X obj 916 101 routeOSC /autoEndSeq;
+#X obj 914 255 s automationEndSeq;
+#X msg 935 175 autoEndSeq \$1;
+#X obj 1119 98 routeOSC /getSettings;
+#X obj 1117 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1117 254 s sendSettings;
+#X connect 0 0 1 0;
+#X connect 0 0 7 0;
+#X connect 0 0 11 0;
+#X connect 0 0 22 0;
+#X connect 0 0 25 0;
+#X connect 0 0 28 0;
+#X connect 0 0 31 0;
+#X connect 1 0 3 0;
+#X connect 3 0 14 0;
+#X connect 3 0 4 0;
+#X connect 6 0 13 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 10 0 15 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 5 0;
+#X connect 14 0 2 0;
+#X connect 15 0 9 0;
+#X connect 17 0 23 0;
+#X connect 17 0 24 0;
+#X connect 19 0 26 0;
+#X connect 19 0 27 0;
+#X connect 21 0 30 0;
+#X connect 21 0 29 0;
+#X connect 22 0 17 0;
+#X connect 23 0 16 0;
+#X connect 25 0 19 0;
+#X connect 26 0 18 0;
+#X connect 28 0 21 0;
+#X connect 30 0 20 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X restore 297 618 pd settings;
+#N canvas 22 204 1016 734 Settings 0;
+#X obj 65 572 outlet;
+#X obj 62 95 r automationEnabled;
+#X obj 111 143 r sendSettings;
+#X msg 94 247;
+#X obj 96 202 prepend set;
+#X obj 62 299 prepend /autoEnabled;
+#X obj 112 177 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 267 144 r sendSettings;
+#X msg 250 248;
+#X obj 252 203 prepend set;
+#X obj 268 178 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 220 96 r automationStartTime;
+#X obj 218 300 prepend /autoStartTime;
+#X obj 428 143 r sendSettings;
+#X msg 411 247;
+#X obj 413 202 prepend set;
+#X obj 429 177 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 577 144 r sendSettings;
+#X msg 560 248;
+#X obj 562 203 prepend set;
+#X obj 578 178 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 733 141 r sendSettings;
+#X msg 716 245;
+#X obj 718 200 prepend set;
+#X obj 734 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 892 141 r sendSettings;
+#X msg 875 245;
+#X obj 877 200 prepend set;
+#X obj 893 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 381 95 r automationEndTime;
+#X obj 379 299 prepend /autoEndTime;
+#X obj 530 96 r automationInterval;
+#X obj 528 300 prepend /autoInterval;
+#X obj 686 93 r automationStartSeq;
+#X obj 845 93 r automationEndSeq;
+#X obj 843 297 prepend /autoEndSeq;
+#X obj 684 297 prepend /autoStartSeq;
+#X connect 1 0 4 0;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 5 0 0 0;
+#X connect 6 0 3 0;
+#X connect 7 0 10 0;
+#X connect 8 0 12 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 11 0 9 0;
+#X connect 11 0 12 0;
+#X connect 12 0 0 0;
+#X connect 13 0 16 0;
+#X connect 14 0 30 0;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
+#X connect 17 0 20 0;
+#X connect 18 0 32 0;
+#X connect 19 0 18 0;
+#X connect 20 0 18 0;
+#X connect 21 0 24 0;
+#X connect 22 0 36 0;
+#X connect 23 0 22 0;
+#X connect 24 0 22 0;
+#X connect 25 0 28 0;
+#X connect 26 0 35 0;
+#X connect 27 0 26 0;
+#X connect 28 0 26 0;
+#X connect 29 0 15 0;
+#X connect 29 0 30 0;
+#X connect 30 0 0 0;
+#X connect 31 0 19 0;
+#X connect 31 0 32 0;
+#X connect 32 0 0 0;
+#X connect 33 0 23 0;
+#X connect 33 0 36 0;
+#X connect 34 0 27 0;
+#X connect 34 0 35 0;
+#X connect 35 0 0 0;
+#X connect 36 0 0 0;
+#X restore 667 194 pd Settings;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
@@ -145,8 +371,11 @@
 #X connect 25 0 24 0;
 #X connect 26 0 25 1;
 #X connect 27 0 38 0;
-#X connect 27 0 77 0;
 #X connect 27 0 29 0;
+#X connect 27 0 104 0;
+#X connect 27 0 113 0;
+#X connect 27 0 114 0;
+#X connect 27 0 117 0;
 #X connect 29 0 28 0;
 #X connect 30 0 29 1;
 #X connect 33 0 32 0;
@@ -183,11 +412,48 @@
 #X connect 66 0 62 0;
 #X connect 68 0 69 0;
 #X connect 70 0 72 0;
-#X connect 71 0 73 0;
+#X connect 71 0 112 0;
 #X connect 72 0 75 0;
 #X connect 73 0 74 0;
-#X connect 76 0 78 0;
-#X connect 77 0 68 0;
-#X connect 77 1 70 0;
-#X connect 77 2 71 0;
-#X connect 77 3 76 0;
+#X connect 76 0 77 0;
+#X connect 78 0 84 0;
+#X connect 79 0 82 0;
+#X connect 80 0 83 0;
+#X connect 81 0 85 0;
+#X connect 86 0 87 0;
+#X connect 87 0 88 0;
+#X connect 89 0 90 0;
+#X connect 91 0 43 0;
+#X connect 92 0 105 0;
+#X connect 93 0 95 0;
+#X connect 94 0 96 0;
+#X connect 97 0 98 0;
+#X connect 98 0 43 0;
+#X connect 99 0 100 0;
+#X connect 101 0 103 0;
+#X connect 101 0 110 0;
+#X connect 102 0 43 0;
+#X connect 103 0 102 0;
+#X connect 104 0 81 0;
+#X connect 104 1 78 0;
+#X connect 104 2 79 0;
+#X connect 104 3 80 0;
+#X connect 104 4 89 0;
+#X connect 104 5 93 0;
+#X connect 104 6 94 0;
+#X connect 104 7 99 0;
+#X connect 104 8 107 0;
+#X connect 105 0 91 0;
+#X connect 107 0 106 0;
+#X connect 108 0 109 0;
+#X connect 109 0 105 0;
+#X connect 109 0 111 0;
+#X connect 110 0 111 0;
+#X connect 111 0 102 0;
+#X connect 113 0 68 0;
+#X connect 113 1 70 0;
+#X connect 113 2 71 0;
+#X connect 113 3 76 0;
+#X connect 114 0 115 0;
+#X connect 115 0 116 0;
+#X connect 118 0 43 0;

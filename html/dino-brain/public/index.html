@@ -15,10 +15,10 @@
 
 </head>
 <body>
-	<h2 style="font-family: arial; color:  white;">DINO CONTROL BETA</h2>
+	<!-- <h2 style="font-family: arial; color:  white;">DINO CONTROL BETA</h2> -->
 	<!-- <div style="background-color:blue; width:300px; height:300px;" id="xyPad2"></div> -->
 
-	<div style="width:250px; padding:30px; display:block;" id="xyPad">
+	<div style="width:250px; padding:30px; " id="xyPad">
                 <!-- <div style="margin-bottom:10px">XY</div> -->
                 <fieldset class="pad" data-width="250" data-height="250">
                     <legend>XY Pad</legend>
@@ -27,18 +27,155 @@
                 </fieldset>
 	</div>
 
+	<div>
+		<button type="button" class="bigBtn" id="recordBtn">RECORD</button>
+		
+		<button type="button" class="bigBtn" id="playBtn">PLAY</button>
+	</div>
+	<div>
+		<button type="button" class="bigBtn" id="centerBtn">CENTER</button>
+		
+		<button type="button" class="bigBtn" id="homeBtn">HOME</button>
+	</div>
+		<div>
+		<button type="button" class="midBtn" id="prevSeqBtn">PREV</button>
+		
+		<button type="button" class="midBtn" id="nextSeqBtn">NEXT</button>
+		<select id="seqSelect" class="midBtn">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+	</div>
+	</div>
+	<div id="saveSeqDiv" style="display:none;">
+
+		<button type="button" class="fullBtn" id="saveSeqBtn">SAVE SEQUENCE ?</button>
+		<button type="button" class="fullBtn" id="saveSeqCancBtn">CANCEL</button>
+		
+	</div>
 	<div >
 		<button type="button" class="bigBtn" id="systemOnBtn">MOTORS ON</button>
 		
 		<button type="button" class="bigBtn" id="systemOffBtn">MOTORS OFF</button>
 	</div>
-	<div>
-		<button type="button" class="bigBtn" id="centerBtn">CENTER</button>
-		
-		<button type="button" class="bigBtn" id="topBtn">TOP</button>
+	<div class="divider"></div>
+
+
+	<div style="width:300px;" class="fc">
+
+		<span class="menuLabel">AUTOMATION:</span>
+			<select id="autoEnabledSelect" class="bigBtn fr">
+				<option value="0">DISABLED</option>
+				<option value="1">ENABLED</option>
+				
+			</select>
+		<div class="fc">	
+			<span class="menuLabel">START TIME:</span> 
+			<select id="autoStartTimeSelect" class="bigBtn fr">
+				<option value="8">8am</option>
+				<option value="9">9am</option>
+				<option value="10">10am</option>
+				<option value="11">11am</option>
+				<option value="12">12pm</option>
+				<option value="13">1pm</option>
+				<option value="14">2pm</option>
+				<option value="15">3pm</option>
+				<option value="16">4pm</option>
+				<option value="17">5pm</option>
+				<option value="18">6pm</option>
+				<option value="19">7pm</option>
+				<option value="20">8pm</option>
+				<option value="21">9pm</option>
+				<option value="22">10pm</option>
+				<option value="23">11pm</option>
+				<option value="24">12pm</option>
+			</select>
+		</div>
+		<br>	
+		<div class="fc">	
+			<span class="menuLabel">END TIME:</span>
+			<select id="autoEndTimeSelect" class="bigBtn fr">
+				<option value="9">9am</option>
+				<option value="10">10am</option>
+				<option value="11">11am</option>
+				<option value="12">12pm</option>
+				<option value="13">1pm</option>
+				<option value="14">2pm</option>
+				<option value="15">3pm</option>
+				<option value="16">4pm</option>
+				<option value="17">5pm</option>
+				<option value="18">6pm</option>
+				<option value="19">7pm</option>
+				<option value="20">8pm</option>
+				<option value="21">9pm</option>
+				<option value="22">10pm</option>
+				<option value="23">11pm</option>
+				<option value="24">12pm</option>
+			</select>
+		</div>
+		<br>	
+		<div class="fc">	
+			<span class="menuLabel">INTERVAL:</span>
+			<select id="autoIntervalSelect" class="bigBtn fr">
+				<option value="15">15 min</option>
+				<option value="20">20 min</option>
+				<option value="30">30 min</option>
+				<option value="60">1 hr</option>
+			</select>
+		</div>
+		<div class="fc">	
+			<span class="menuLabel">START SEQ:</span>
+			<select id="autoStartSeqSelect" class="bigBtn fr">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+		</div>
+		<div class="fc">	
+			<span class="menuLabel">END SEQ:</span>
+			<select id="autoEndSeqSelect" class="bigBtn fr">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+		</div>
+
 	</div>
+
+	<div class="divider"></div>
 	
-	<div id="status"></div>
+	<div >
+		<button type="button" class="fullBtn" id="systemShutdownBtn">SYSTEM SHUTDOWN</button>
+	</div>
+	<div id="systemShutdownDiv" >
+		<button type="button" class="bigBtn" id="systemShutdownConfBtn">SHUTDOWN</button>
+		<button type="button" class="bigBtn" id="systemShutdownCancBtn">CANCEL</button>
+	</div>
+
+
+	<div id="status" ></div>
 	
 	<script src="/socket.io/socket.io.js"></script>
 

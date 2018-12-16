@@ -1,0 +1,6 @@
+autoEnabled, 1;
+autoStartTime, 9;
+autoEndTime, 17;
+autoInterval, 60;
+autoStartSeq, 1;
+autoEndSeq, 2;

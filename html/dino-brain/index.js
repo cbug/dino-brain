@@ -80,11 +80,11 @@ io.on('connection', (socket) => {
 
   });
 
-  socket.on('top', (data) => {
+  socket.on('homePos', (data) => {
 
-    console.log('top '+data);
+    console.log('homePos '+data);
     
-    oscClient.send('/top', data);
+    oscClient.send('/homePos', data);
 
   });
 
@@ -96,6 +96,118 @@ io.on('connection', (socket) => {
     oscClient.send('/x', data[0]);
     oscClient.send('/y', data[1]);
     oscClient.send('/xy', data[0]+' '+data[1]);
+  });
+
+  socket.on('recStart', (data) => {
+
+    console.log('recStart '+data);
+    
+    oscClient.send('/recStart', data);
+
+  });
+
+  socket.on('recStop', (data) => {
+
+    console.log('recStop '+data);
+    
+    oscClient.send('/recStop', data);
+
+  });
+
+  socket.on('seqStart', (data) => {
+
+    console.log('seqStart '+data);
+    
+    oscClient.send('/seqStart', data);
+
+  });
+
+  socket.on('seqStop', (data) => {
+
+    console.log('seqStop '+data);
+    
+    oscClient.send('/seqStop', data);
+
+  });
+
+  socket.on('seqNum', (data) => {
+
+    console.log('seqNum '+data);
+    
+    oscClient.send('/seqNum', data);
+
+  });
+
+  socket.on('nextSeq', (data) => {
+    
+    oscClient.send('/nextSeq', data);
+
+  });
+
+  socket.on('prevSeq', (data) => {
+    
+    oscClient.send('/prevSeq', data);
+
+  });
+
+  socket.on('saveSeq', (data) => {
+    
+    oscClient.send('/saveSeq', data);
+
+  });
+
+  socket.on('getCurSeq', (data) => {
+    
+    oscClient.send('/getCurSeq', data);
+
+  });
+
+  socket.on('autoEnabled', (data) => {
+    
+    oscClient.send('/autoEnabled', data);
+
+  });
+
+  socket.on('autoStartTime', (data) => {
+    
+    oscClient.send('/autoStartTime', data);
+
+  });
+
+  socket.on('autoEndTime', (data) => {
+    
+    oscClient.send('/autoEndTime', data);
+
+  });
+
+  socket.on('autoStartSeq', (data) => {
+    
+    oscClient.send('/autoStartSeq', data);
+
+  });
+
+  socket.on('autoInterval', (data) => {
+    
+    oscClient.send('/autoInterval', data);
+
+  });
+
+  socket.on('autoEndSeq', (data) => {
+    
+    oscClient.send('/autoEndSeq', data);
+
+  });
+
+  socket.on('getSettings', (data) => {
+    
+    oscClient.send('/getSettings', data);
+
+  });
+
+  socket.on('systemShutdown', (data) => {
+    
+    oscClient.send('/systemShutdown', data);
+
   });
 
   // when the client emits 'add user', this listens and executes

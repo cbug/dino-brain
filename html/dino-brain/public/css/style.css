@@ -6,8 +6,56 @@ body{
 	font-family: arial;
 	font-size: 18px;
 	width: 150px;
-	height: 50px;
-	margin-bottom:20px;
+	height: 40px;
+	margin-bottom:10px;
 	background-color:black;
 	color:white;
 }
+
+.midBtn{
+	font-family: arial;
+	font-size: 18px;
+	width: 99px;
+	height: 40px;
+	margin-bottom:10px;
+	background-color:black;
+	color:white;
+}
+
+.fullBtn{
+	font-family: arial;
+	font-size: 18px;
+	width: 300px;
+	height: 40px;
+	margin-bottom:10px;
+	background-color:black;
+	color:white;
+}
+
+.divider{
+	height: 60px;
+}
+.menuLabel{
+	font-family: arial;
+	color:white;
+	font-size: 20px;
+	padding-top:8px;
+	display: inline-block;
+}
+
+.menuTitle{
+	font-family: arial;
+	color:white;
+	font-size: 20px;
+	margin-bottom: 20px;
+
+}
+
+.fr{
+	float: 	right;
+}
+
+.fc{
+	clear: both;
+}
+

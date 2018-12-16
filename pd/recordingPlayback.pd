@@ -1,0 +1,273 @@
+#N canvas 6 99 1142 899 10;
+#X obj 158 186 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 228 f;
+#X obj 156 120 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 199 226 + 1;
+#X obj 158 268 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 469 256;
+#X obj 158 511 tabwrite recordX;
+#X msg 95 184 0;
+#X obj 158 466 pack f f;
+#X obj 253 251 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6159 1;
+#X obj 158 430 swap, f 14;
+#X obj 839 216 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 839 258 f;
+#X obj 785 134 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 873 258 + 1;
+#X obj 839 333 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X msg 922 178 0;
+#X obj 839 458 tabread recordX;
+#X obj 839 514 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 -0.03 256;
+#X obj 839 570 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6159 1;
+#X msg 270 430 \; recordX resize \$1;
+#X obj 158 385 t f f;
+#X obj 158 148 metro 20;
+#X obj 265 573 table recordY;
+#X obj 160 574 table recordX;
+#X msg 283 73 0;
+#X msg 148 75 1;
+#X obj 839 178 metro 20;
+#X msg 833 92 1;
+#X obj 409 464 pack f f;
+#X obj 504 249 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 409 428 swap, f 14;
+#X obj 409 383 t f f;
+#X obj 964 514 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 1 256;
+#X obj 964 570 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 964 458 tabread recordY;
+#X obj 253 207 r xPos;
+#X obj 504 207 r yPos;
+#X msg 521 428 \; recordY resize \$1;
+#X obj 409 509 tabwrite recordY;
+#X msg 29 793 \; recordX write recordings/x/\$1;
+#X msg 248 791 \; recordY write recordings/y/\$1;
+#X msg 472 790 \; recordX read recordings/x/\$1;
+#X msg 687 789 \; recordY read recordings/y/\$1;
+#N canvas 2 154 1072 787 fileBrowser 0;
+#X obj 41 130 print;
+#X obj 41 89 shell;
+#X msg 42 49 ls -1 /home/pi/Documents/dino-brain/pd/recordings/x/;
+#X obj 49 255 tabwrite filelist;
+#X obj 60 383 table filelist;
+#X obj 483 256 msgfile;
+#X obj 414 183 prepend add;
+#X obj 405 287 textfile;
+#X msg 235 96 clear;
+#X obj 482 318 prepend set;
+#X msg 482 360 1, f 40;
+#X obj 510 109 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 500 144 prepend goto;
+#X obj 559 185 t b a;
+#X obj 583 220 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 640 201 this;
+#X msg 782 175 rewind;
+#X msg 655 238 goto 1;
+#X obj 274 576 print;
+#X obj 274 535 shell;
+#X msg 275 495 ls -1 /home/pi/Documents/dino-brain/pd/recordings/x/
+;
+#X obj 279 625 f;
+#X obj 320 624 + 1;
+#X msg 227 625 0;
+#X obj 287 688 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X connect 1 0 0 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 2 0 8 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 6 0 7 0;
+#X connect 8 0 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 10 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 1 5 0;
+#X connect 14 0 5 0;
+#X connect 15 0 5 0;
+#X connect 16 0 5 0;
+#X connect 17 0 5 0;
+#X connect 19 0 18 0;
+#X connect 19 0 21 0;
+#X connect 20 0 19 0;
+#X connect 20 0 23 0;
+#X connect 21 0 22 0;
+#X connect 21 0 24 0;
+#X connect 22 0 21 1;
+#X connect 23 0 21 0;
+#X restore 650 202 pd fileBrowser;
+#X obj 500 114 nbx 5 14 1 20 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 4 256;
+#X obj 35 693 r saveSequence;
+#X obj 205 696 r currentSequence;
+#X obj 36 733 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 206 731 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 4 256;
+#X obj 41 764 f;
+#X obj 500 158 s currentSequence;
+#X obj 148 41 r sequenceRecStart;
+#X obj 286 41 r sequenceRecStop;
+#X obj 472 698 r currentSequence;
+#X obj 472 731 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 4 256;
+#X obj 502 75 prepend set;
+#X obj 499 45 r currentSequence;
+#N canvas 1192 236 450 300 (subpatch) 0;
+#X obj 103 164 inlet;
+#X obj 97 250 outlet;
+#X msg 71 133 1;
+#X obj 84 202 + 0;
+#X obj 69 107 r nextSequence;
+#X obj 232 74 r prevSequence;
+#X msg 233 147 -1, f 4;
+#X connect 0 0 3 1;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X restore 458 112 pd;
+#X obj 658 52 s nextSequence;
+#X obj 653 108 s prevSequence;
+#X obj 660 26 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 656 80 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 920 93 0;
+#X obj 833 48 r seqStart;
+#X obj 921 48 r seqStop;
+#X obj 840 732 s xPos;
+#X obj 964 732 s yPos;
+#N canvas 2 71 415 820 seqLength 0;
+#X obj 43 184 expr size("recordX");
+#X obj 42 92 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 43 249 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 469 256;
+#X obj 44 299 s curSeqLength;
+#X obj 42 53 r getSeqLength;
+#X obj 42 133 delay 500;
+#X connect 0 0 2 0;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 4 0 1 0;
+#X connect 5 0 0 0;
+#X restore 598 541 pd seqLength;
+#X obj 939 363 > 100;
+#X obj 969 422 s seqEnd;
+#X obj 971 319 r curSeqLength;
+#X obj 283 125 s getSeqLength;
+#X obj 1007 47 r seqEnd;
+#X obj 969 397 select 1;
+#N canvas 1213 491 450 300 isSeqSaved 0;
+#X obj 32 191 s seqSaved;
+#X obj 32 35 r currentSequence;
+#X obj 32 126 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 32 84 1;
+#X obj 277 74 0;
+#X obj 279 35 r sequenceRecStop;
+#X obj 167 34 r saveSequence;
+#X obj 121 192 outlet;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 2 0 7 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 3 0;
+#X restore 407 572 pd isSeqSaved;
+#X obj 407 610 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 532 731 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 132 341 450 300 autostepSeq 0;
+#X restore 618 313 pd autostepSeq;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 21 0;
+#X connect 3 0 1 1;
+#X connect 4 0 20 0;
+#X connect 4 0 31 0;
+#X connect 6 0 1 0;
+#X connect 7 0 5 0;
+#X connect 8 0 9 1;
+#X connect 9 0 7 0;
+#X connect 9 1 7 1;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 11 0 14 0;
+#X connect 12 0 26 0;
+#X connect 13 0 11 1;
+#X connect 14 0 16 0;
+#X connect 14 0 34 0;
+#X connect 14 0 68 0;
+#X connect 15 0 11 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 65 0;
+#X connect 20 0 9 0;
+#X connect 20 1 19 0;
+#X connect 21 0 0 0;
+#X connect 24 0 2 0;
+#X connect 24 0 71 0;
+#X connect 25 0 2 0;
+#X connect 25 0 6 0;
+#X connect 26 0 10 0;
+#X connect 27 0 12 0;
+#X connect 27 0 15 0;
+#X connect 28 0 38 0;
+#X connect 29 0 30 1;
+#X connect 30 0 28 0;
+#X connect 30 1 28 1;
+#X connect 31 0 30 0;
+#X connect 31 1 37 0;
+#X connect 32 0 33 0;
+#X connect 33 0 66 0;
+#X connect 34 0 32 0;
+#X connect 35 0 8 0;
+#X connect 36 0 29 0;
+#X connect 44 0 50 0;
+#X connect 45 0 47 0;
+#X connect 46 0 48 0;
+#X connect 47 0 49 0;
+#X connect 48 0 49 1;
+#X connect 49 0 39 0;
+#X connect 49 0 40 0;
+#X connect 51 0 25 0;
+#X connect 52 0 24 0;
+#X connect 53 0 54 0;
+#X connect 53 0 76 0;
+#X connect 54 0 41 0;
+#X connect 54 0 42 0;
+#X connect 55 0 44 0;
+#X connect 56 0 55 0;
+#X connect 56 0 57 0;
+#X connect 57 0 44 0;
+#X connect 60 0 58 0;
+#X connect 61 0 59 0;
+#X connect 62 0 12 0;
+#X connect 62 0 15 0;
+#X connect 63 0 27 0;
+#X connect 64 0 62 0;
+#X connect 68 0 73 0;
+#X connect 70 0 68 1;
+#X connect 72 0 62 0;
+#X connect 73 0 69 0;
+#X connect 74 0 75 0;

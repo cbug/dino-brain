@@ -1,10 +1,22 @@
 $(function($) {
 
+    var curSequence = 0;
+
     var socket = io();
 
     var connected = false;
 
     var tracking = false;
+
+    // oscSend('getCurSeq', 1);
+    setTimeout(function(){
+        oscSend('getCurSeq', 1);
+    }, 1000);
+
+    setTimeout(function(){
+        oscSend('getSettings', 1);
+    }, 2000);
+    
 
 
     var $pad = $(".pad")
@@ -37,10 +49,126 @@ $(function($) {
         oscSend('center', 1);
     });
 
-    $('#topBtn').click(function(e){
-        console.log('top');
-        oscSend('top', 1);
+    $('#homeBtn').click(function(e){
+        console.log('home');
+        oscSend('homePos', 1);
+    }); 
+
+    $("#systemShutdownDiv").hide();  
+    $('#systemShutdownBtn').click(function(e){
+        $("#systemShutdownDiv").slideDown();
     });
+
+    $('#systemShutdownConfBtn').click(function(e){
+        oscSend('systemShutdown', 1);
+    });
+
+    $('#systemShutdownCancBtn').click(function(e){
+        
+        $("#systemShutdownDiv").slideUp();
+    });
+
+    var recording = false;
+    $('#recordBtn').click(function(e){
+        if(!recording){
+            recording = true;
+            // $('#recordBtn').html('STOP');
+            timerInterval = setInterval(recCounter, 1000);
+            console.log('recStart');
+            oscSend('recStart', 1);
+        }else{
+            recording = false;
+            $('#recordBtn').html('RECORD');
+            clearInterval(timerInterval);
+            totalSeconds = 0;
+            console.log('recStop');
+            oscSend('recStop', 1);
+        }
+         
+    });
+
+    var playing = false;
+    $('#playBtn').click(function(e){
+        if(!playing){
+            playing = true;
+            $('#playBtn').html('PAUSE');
+            // timerInterval = setInterval(recCounter, 1000);
+            console.log('PAUSE');
+            oscSend('seqStart', 1);
+        }else{
+            seqStop();
+            oscSend('seqStop', 1);
+        }
+         
+    });
+
+    function seqStop(){
+        playing = false;
+        $('#playBtn').html('PLAY');
+        clearInterval(timerInterval);
+        console.log('seqStop');
+    }
+
+    $('#seqSelect').change(function(){
+        var seqNum = parseInt($('#seqSelect').val());
+        oscSend('seqNum', seqNum);
+    });
+
+    $('#nextSeqBtn').click(function(){
+        oscSend('nextSeq', 1);
+    });
+
+    $('#prevSeqBtn').click(function(){
+        oscSend('prevSeq', 1);
+    });
+
+    $('#saveSeqBtn').click(function(e){
+        console.log('saveSeq');
+        oscSend('saveSeq', 1);
+    });
+    $('#saveSeqCancBtn').click(function(e){
+        console.log('saveSeq');
+        oscSend('seqNum', curSequence);
+    });
+
+    $('#autoEnabledSelect').change(function(){
+        var val = parseInt($('#autoEnabledSelect').val());
+        oscSend('autoEnabled', val);
+    });
+
+    $('#autoStartTimeSelect').change(function(){
+        var val = parseInt($('#autoStartTimeSelect').val());
+        oscSend('autoStartTime', val);
+    });
+
+    $('#autoEndTimeSelect').change(function(){
+        var val = parseInt($('#autoEndTimeSelect').val());
+        oscSend('autoEndTime', val);
+    });
+
+    $('#autoEndTimeSelect').change(function(){
+        var val = parseInt($('#autoEndTimeSelect').val());
+        oscSend('autoEndTime', val);
+    });
+
+    $('#autoIntervalSelect').change(function(){
+        var val = parseInt($('#autoIntervalSelect').val());
+        oscSend('autoInterval', val);
+    });
+
+
+    $('#autoStartSeqSelect').change(function(){
+        var val = parseInt($('#autoStartSeqSelect').val());
+        oscSend('autoStartSeq', val);
+    });
+
+    $('#autoEndSeqSelect').change(function(){
+        var val = parseInt($('#autoEndSeqSelect').val());
+        oscSend('autoEndSeq', val);
+    });
+
+
+
 
     socket.on('xy2', (data) => {
         
@@ -89,6 +217,84 @@ $(function($) {
                     $('#yInput').val(y).trigger('change');
 
                 break;
+
+            case '/seqNum':
+
+                curSequence = data[1];
+                
+                $('#seqSelect').val(curSequence);
+
+                break;
+
+            case '/seqComplete':
+
+                seqStop();
+
+                
+
+                break;
+
+            case '/seqSaved':
+
+                if( data[1] == 1){
+                    $('#saveSeqDiv').hide();
+                }else{
+                    $('#saveSeqDiv').show();
+                }
+
+                
+
+                break;
+
+            case '/autoEnabled':
+
+                var val = data[1];
+                
+                $('#autoEnabledSelect').val(val);
+
+                break;
+
+            case '/autoStartTime':
+
+                var val = data[1];
+                
+                $('#autoStartTimeSelect').val(val);
+
+                break;
+
+            case '/autoEndTime':
+
+                var val = data[1];
+                
+                $('#autoEndTimeSelect').val(val);
+
+                break;
+
+            case '/autoInterval':
+
+                var val = data[1];
+                
+                $('#autoIntervalSelect').val(val);
+
+                break;
+
+            case '/autoStartSeq':
+
+                var val = data[1];
+                
+                $('#autoStartSeqSelect').val(val);
+
+                break;
+
+            case '/autoEndSeq':
+
+                var val = data[1];
+                
+                $('#autoEndSeqSelect').val(val);
+
+                break;
+
+
         }
 
 
@@ -137,6 +343,34 @@ $(function($) {
              console.log('tracking done');   
         }, 500);
     });
+
+
+
+
+    // rec timer ------------------------------------------
+
+    var totalSeconds = 0;
+    var timerInterval;
+    
+
+    function recCounter() {
+      ++totalSeconds;
+      var sec = pad(totalSeconds % 60);
+      var min = pad(parseInt(totalSeconds / 60));
+
+      $('#recordBtn').html(min+':'+sec);
+
+
+    }
+
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
 	
 
 
