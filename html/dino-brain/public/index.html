@@ -7,6 +7,8 @@
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.kontrol.js"></script>
 	<link rel="stylesheet" href="css/style.css" />
+	<script src="js/jquery.pinlogin.js"></script>
+	<link href="js/jquery.pinlogin.css" rel="stylesheet">
 	<!-- <script type="text/javascript" src="js/socket.js"></script> -->
 
 	<!-- <script src="http://192.168.8.50:8081/socket.io/socket.io.js"></script> -->
@@ -15,10 +17,10 @@
 
 </head>
 <body>
-	<!-- <h2 style="font-family: arial; color:  white;">DINO CONTROL BETA</h2> -->
+	<h2 style="font-family: arial; color:  white;" class="notAdmin">DINO CONTROL</h2>
 	<!-- <div style="background-color:blue; width:300px; height:300px;" id="xyPad2"></div> -->
 
-	<div style="width:250px; padding:30px; " id="xyPad">
+	<div style="width:250px; padding:30px; padding-top:10px; " id="xyPad">
                 <!-- <div style="margin-bottom:10px">XY</div> -->
                 <fieldset class="pad" data-width="250" data-height="250">
                     <legend>XY Pad</legend>
@@ -28,54 +30,86 @@
 	</div>
 
 	<div>
-		<button type="button" class="bigBtn" id="recordBtn">RECORD</button>
-		
-		<button type="button" class="bigBtn" id="playBtn">PLAY</button>
+		<div id="dutyCycle" style="width:300px;">
+  			<div id="dutyCycleProgressBar"></div>
+		</div>
 	</div>
-	<div>
-		<button type="button" class="bigBtn" id="centerBtn">CENTER</button>
-		
-		<button type="button" class="bigBtn" id="homeBtn">HOME</button>
-	</div>
-		<div>
-		<button type="button" class="midBtn" id="prevSeqBtn">PREV</button>
-		
-		<button type="button" class="midBtn" id="nextSeqBtn">NEXT</button>
-		<select id="seqSelect" class="midBtn">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-		</select>
-	</div>
-	</div>
-	<div id="saveSeqDiv" style="display:none;">
 
-		<button type="button" class="fullBtn" id="saveSeqBtn">SAVE SEQUENCE ?</button>
-		<button type="button" class="fullBtn" id="saveSeqCancBtn">CANCEL</button>
-		
+	<div>
+		<div id="motorCoolDown" style="width:300px; display:none;">
+  			<div>	
+  				DUTY CYCLE EXCEDED
+  				<br>	
+  				<br>	
+  				WAITING FOR MOTOR COOL DOWN
+  				<div id="motorCoolDownTime">	</div>
+  			</div>
+  			<div id="motorCoolDownProgressBar"></div>
+		</div>
 	</div>
-	<div >
-		<button type="button" class="bigBtn" id="systemOnBtn">MOTORS ON</button>
+	<div id="pinwrapper"></div>
+	<div id="controlPanel" >	
+		<div>
+			<button type="button" class="fullBtn admin" id="recordBtn">RECORD</button>
+			
+			
+		</div>
+		<div id="saveSeqDiv" style="display:none; width:100px;">
+
+			<button type="button" class="fullBtn" id="saveSeqBtn">SAVE SEQUENCE ?</button>
+			<button type="button" class="fullBtn" id="saveSeqCancBtn">CANCEL</button>
+			
+		</div>
+		<div class='admin'>
+			<button type="button" class="bigBtn" id="centerBtn">CENTER</button>
+			
+			<button type="button" class="bigBtn" id="homeBtn">HOME</button>
+		</div>
+			<div class="menuTitle notAdmin">SEQUENCE:</div>\
+			<div>
+			<button type="button" class="midBtn" id="prevSeqBtn">PREV</button>
+			
+			<button type="button" class="midBtn" id="nextSeqBtn">NEXT</button>
+			<select id="seqSelect" class="midBtn">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+		</div>
+		<div>	
+			<button type="button" class="fullBtn" id="playBtn">PLAY</button>
+		</div>
 		
-		<button type="button" class="bigBtn" id="systemOffBtn">MOTORS OFF</button>
+
+		<div class="admin">
+			<button type="button" class="bigBtn" id="systemOnBtn">MOTORS ON</button>
+			
+			<button type="button" class="bigBtn" id="systemOffBtn">MOTORS OFF</button>
+		</div>
+
 	</div>
 	<div class="divider"></div>
+	<div class="divider"></div>
+
+	<div>
+		<button type="button" class="fullBtn notAdmin" id="adminBtn">ADMIN</button>
+	</div>
 
 
-	<div style="width:300px;" class="fc">
+	<div id="settings" class='admin' style="width:300px; display: none;" class="fc">
+		<div class="divider"></div>
 
-		<span class="menuLabel">AUTOMATION:</span>
+		<span class="menuLabe">AUTOMATION:</span>
 			<select id="autoEnabledSelect" class="bigBtn fr">
 				<option value="0">DISABLED</option>
 				<option value="1">ENABLED</option>
-				
 			</select>
 		<div class="fc">	
 			<span class="menuLabel">START TIME:</span> 
@@ -161,18 +195,20 @@
 				<option value="10">10</option>
 			</select>
 		</div>
+		<div class="divider"></div>
+		<div >
+			<button type="button" class="fullBtn" id="systemShutdownBtn">SYSTEM SHUTDOWN</button>
+		</div>
+		<div id="systemShutdownDiv" >
+			<button type="button" class="bigBtn" id="systemShutdownConfBtn">SHUTDOWN</button>
+			<button type="button" class="bigBtn" id="systemShutdownCancBtn">CANCEL</button>
+		</div>
 
 	</div>
 
-	<div class="divider"></div>
 	
-	<div >
-		<button type="button" class="fullBtn" id="systemShutdownBtn">SYSTEM SHUTDOWN</button>
-	</div>
-	<div id="systemShutdownDiv" >
-		<button type="button" class="bigBtn" id="systemShutdownConfBtn">SHUTDOWN</button>
-		<button type="button" class="bigBtn" id="systemShutdownCancBtn">CANCEL</button>
-	</div>
+	
+	
 
 
 	<div id="status" ></div>

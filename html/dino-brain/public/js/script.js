@@ -8,6 +8,8 @@ $(function($) {
 
     var tracking = false;
 
+    var admin = false;
+
     // oscSend('getCurSeq', 1);
     setTimeout(function(){
         oscSend('getCurSeq', 1);
@@ -167,6 +169,18 @@ $(function($) {
         oscSend('autoEndSeq', val);
     });
 
+    $('#adminBtn').click(function(){
+        $('#pinwrapper').show();
+        $('#pinwrapper').pinlogin({
+                  fields : 4, // default 5,
+                  complete: function(pin){
+                    $('#pinwrapper').css('display', 'none');
+                    oscSend('adminPin', pin);
+
+                  }
+        });
+    });
+
 
 
 
@@ -187,6 +201,16 @@ $(function($) {
         // });
         // addParticipantsMessage(data);
     });
+
+    socket.on('adminAccepted', (data) => {
+        adminAccepted();
+    });
+
+    function adminAccepted(){
+        admin = true;
+        $('.admin').show();
+        $('.notAdmin').hide();
+    }
 
     socket.on('osc message', (data) => {
         
@@ -294,6 +318,64 @@ $(function($) {
 
                 break;
 
+            case '/adminAccepted':
+
+                var val = data[1];
+                
+                alert("adminAccepted");
+
+                break;
+
+            case '/dutyCycle':
+
+                var val = data[1];
+                
+                var width = val;
+
+                $('#dutyCycleProgressBar').css("width", width+'%');
+
+                if(val>90){
+                    $('#dutyCycleProgressBar').css("background-color", 'red');
+                }else if(val>80){
+                    $('#dutyCycleProgressBar').css("background-color", 'orange');
+                }else{
+                    $('#dutyCycleProgressBar').css("background-color", 'green');
+                }
+
+                break;
+
+            case '/motorCoolDown':
+
+                var val = data[1];
+
+                
+
+                if(val>0){
+
+                        $('#controlPanel').css('visibility', 'hidden');
+                        $('#dutyCycle').css('visibility', 'hidden');
+                        $('#motorCoolDown').show();
+                        var width = val*100;
+
+                        $('#motorCoolDownProgressBar').css("width", width+'%');
+
+                        var totalSec = parseInt(3*60*val);
+                        
+                        var min = parseInt(totalSec/60);
+                        var sec = totalSec % 60;
+                        if(sec<10) sec = '0'+sec;
+                        $('#motorCoolDownTime').html(min+':'+sec);
+
+                }else{
+                    $('#motorCoolDown').hide();
+                    $('#controlPanel').css('visibility', 'visible');
+                    $('#dutyCycle').css('visibility', 'visible');
+                    
+                }
+                
+                
+
+                break;
 
         }
 
@@ -341,7 +423,7 @@ $(function($) {
         trackingTimeout = setTimeout(function(){
              tracking = false;
              console.log('tracking done');   
-        }, 500);
+        }, 1000);
     });
 
 
@@ -358,7 +440,7 @@ $(function($) {
       var sec = pad(totalSeconds % 60);
       var min = pad(parseInt(totalSeconds / 60));
 
-      $('#recordBtn').html(min+':'+sec);
+      $('#recordBtn').html(min+':'+sec+"  STOP");
 
 
     }

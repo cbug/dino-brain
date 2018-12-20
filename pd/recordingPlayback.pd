@@ -1,4 +1,4 @@
-#N canvas 6 99 1142 899 10;
+#N canvas 5 105 1142 899 10;
 #X obj 158 186 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 158 228 f;
@@ -6,12 +6,12 @@
 1;
 #X obj 199 226 + 1;
 #X obj 158 268 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 469 256;
+-262144 -1 -1 1498 256;
 #X obj 158 511 tabwrite recordX;
 #X msg 95 184 0;
 #X obj 158 466 pack f f;
 #X obj 253 251 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6159 1;
+-1 -1 6350 1;
 #X obj 158 430 swap, f 14;
 #X obj 839 216 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -24,9 +24,9 @@
 #X msg 922 178 0;
 #X obj 839 458 tabread recordX;
 #X obj 839 514 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -0.03 256;
+-262144 -1 -1 0 256;
 #X obj 839 570 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6159 1;
+-1 -1 6350 1;
 #X msg 270 430 \; recordX resize \$1;
 #X obj 158 385 t f f;
 #X obj 158 148 metro 20;
@@ -111,20 +111,20 @@
 #X connect 23 0 21 0;
 #X restore 650 202 pd fileBrowser;
 #X obj 500 114 nbx 5 14 1 20 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 4 256;
+-1 -1 1 256;
 #X obj 35 693 r saveSequence;
 #X obj 205 696 r currentSequence;
 #X obj 36 733 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 206 731 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 4 256;
+-262144 -1 -1 1 256;
 #X obj 41 764 f;
 #X obj 500 158 s currentSequence;
 #X obj 148 41 r sequenceRecStart;
 #X obj 286 41 r sequenceRecStop;
 #X obj 472 698 r currentSequence;
 #X obj 472 731 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 4 256;
+-262144 -1 -1 1 256;
 #X obj 502 75 prepend set;
 #X obj 499 45 r currentSequence;
 #N canvas 1192 236 450 300 (subpatch) 0;
@@ -153,12 +153,12 @@
 #X obj 921 48 r seqStop;
 #X obj 840 732 s xPos;
 #X obj 964 732 s yPos;
-#N canvas 2 71 415 820 seqLength 0;
+#N canvas 2 77 415 820 seqLength 1;
 #X obj 43 184 expr size("recordX");
 #X obj 42 92 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 43 249 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 469 256;
+-262144 -1 -1 1498 256;
 #X obj 44 299 s curSeqLength;
 #X obj 42 53 r getSeqLength;
 #X obj 42 133 delay 500;
@@ -198,6 +198,8 @@
 -1 -1;
 #N canvas 132 341 450 300 autostepSeq 0;
 #X restore 618 313 pd autostepSeq;
+#X obj 416 80 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 1 0 4 0;
@@ -259,6 +261,7 @@
 #X connect 55 0 44 0;
 #X connect 56 0 55 0;
 #X connect 56 0 57 0;
+#X connect 56 0 78 0;
 #X connect 57 0 44 0;
 #X connect 60 0 58 0;
 #X connect 61 0 59 0;
@@ -271,3 +274,4 @@
 #X connect 72 0 62 0;
 #X connect 73 0 69 0;
 #X connect 74 0 75 0;
+#X connect 78 0 71 0;

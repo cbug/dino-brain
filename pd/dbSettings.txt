@@ -1,6 +1,8 @@
-autoEnabled, 1;
-autoStartTime, 9;
-autoEndTime, 17;
-autoInterval, 60;
+autoEnabled, 0;
+autoStartTime, 14;
+autoEndTime, 20;
+autoInterval, 15;
 autoStartSeq, 1;
-autoEndSeq, 2;
+autoEndSeq, 1;
+homePosX, 0;
+homePosY, 1;

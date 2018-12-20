@@ -1,4 +1,4 @@
-#N canvas 39 103 1103 744 10;
+#N canvas 100 115 1101 863 10;
 #X msg 50 177 bang;
 #X floatatom 163 243 0 0 0 0 - - -;
 #X floatatom 100 288 0 0 0 0 - - -;
@@ -20,7 +20,7 @@
 #X obj 119 424 select 0;
 #X msg 119 448 60;
 #X obj 228 135 pack 0 0;
-#X msg 228 205 15 11;
+#X msg 228 205 18 37;
 #X obj 228 168 prepend set;
 #X obj 229 250 print automation triggered;
 #X obj 56 243 s hr;
@@ -39,20 +39,19 @@
 #X obj 522 470 r automationEndTime;
 #X obj 210 631 spigot;
 #X obj 50 150 metro 990;
-#X obj 389 628 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 389 628 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 389 592 r automationEnabled;
-#X obj 210 669 spigot, f 26;
+#X obj 209 688 spigot, f 26;
 #X obj 583 539 r automationStartSeq;
 #X obj 585 609 r automationEndSeq;
 #X obj 583 580 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 1 256;
 #X obj 585 649 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 2 256;
+-262144 -1 -1 4 256;
 #X obj 343 168 r startAutomation;
-#X obj 210 707 s startAutomation;
+#X obj 210 770 s startAutomation;
 #X obj 567 248 f;
-#X obj 210 707 s startAutomation;
 #X obj 567 114 r startAutomation;
 #X obj 567 296 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -61,13 +60,13 @@
 #X obj 565 181 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 641 268 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 3 256;
+-262144 -1 -1 1 256;
 #X obj 617 296 s currentSequence;
-#N canvas 1185 420 679 613 incrimentAutomationSequence 1;
+#N canvas 1185 420 679 613 incrimentAutomationSequence 0;
 #X obj 101 195 + 0;
 #X msg 98 134 1;
 #X obj 344 355 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 2 256;
+-262144 -1 -1 4 256;
 #X obj 44 534 f;
 #X obj 15 447 select 1;
 #X obj 116 414 <;
@@ -88,7 +87,7 @@
 -1;
 #X obj 89 455 select 1;
 #X obj 270 73 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 1 256;
+-262144 -1 -1 2 256;
 #X obj 268 37 r curAutomationSeq;
 #X obj 44 411 >;
 #X obj 30 507 delay 100;
@@ -130,8 +129,12 @@
 #X obj 925 26 bng 40 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 591 198 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 1 256;
+-262144 -1 -1 2 256;
 #X obj 589 162 r curAutomationSeq;
+#X obj 423 626 r motorCoolDownOff;
+#X obj 423 669 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 210 728 spigot, f 31;
 #X connect 0 0 4 0;
 #X connect 2 0 11 0;
 #X connect 4 0 3 0;
@@ -170,17 +173,20 @@
 #X connect 35 0 0 0;
 #X connect 36 0 38 1;
 #X connect 37 0 36 0;
-#X connect 38 0 44 0;
+#X connect 38 0 60 0;
 #X connect 39 0 41 0;
 #X connect 40 0 42 0;
 #X connect 43 0 18 0;
-#X connect 45 0 48 0;
+#X connect 45 0 47 0;
+#X connect 45 0 51 0;
 #X connect 45 0 52 0;
-#X connect 45 0 53 0;
-#X connect 47 0 51 0;
+#X connect 46 0 50 0;
+#X connect 47 0 48 0;
 #X connect 48 0 49 0;
-#X connect 49 0 50 0;
-#X connect 51 0 45 0;
-#X connect 56 0 55 0;
-#X connect 57 0 45 1;
-#X connect 58 0 57 0;
+#X connect 50 0 45 0;
+#X connect 55 0 54 0;
+#X connect 56 0 45 1;
+#X connect 57 0 56 0;
+#X connect 58 0 59 0;
+#X connect 59 0 60 1;
+#X connect 60 0 44 0;

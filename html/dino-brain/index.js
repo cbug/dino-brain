@@ -22,7 +22,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var numUsers = 0;
 
+var adminPin = 5000;
+
 io.on('connection', (socket) => {
+
+  socket.admin = 0;
+
+  socket.on('adminPin', (data) => {
+    // we tell the client to execute 'new message'
+    console.log(data);
+    if(data == 5000){
+      console.log('admin match');
+      socket.emit('adminAccepted', 1);
+      socket.admin = 1;
+    }
+
+  });
 
   console.log('client connected');
 

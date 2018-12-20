@@ -1,4 +1,4 @@
-#N canvas 184 152 1094 924 10;
+#N canvas 104 120 1094 846 10;
 #X obj 47 81 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 12700 1;
 #X obj 114 208 hsl 128 15 -0.5 0.5 0 0 empty empty empty -2 -8 0 10
@@ -30,7 +30,7 @@
 #X obj 551 32 r yPos;
 #X obj 551 59 prepend set;
 #X obj 551 236 s yPos;
-#X obj 410 86 hsl 128 128 -0.5 0.5 0 0 empty empty empty -2 -8 0 10
+#X obj 410 87 hsl 128 128 -0.5 0.5 0 0 empty empty empty -2 -8 0 10
 -262144 -1 -1 6350 1;
 #X obj 408 29 r xPos;
 #X obj 408 56 prepend set;
@@ -46,7 +46,160 @@
 #X obj 406 462 s yPos;
 #X msg 405 420 1;
 #X msg 337 419 0, f 4;
-#X obj 485 362;
+#X obj 732 67 r xPos;
+#X obj 821 65 r yPos;
+#X obj 732 142 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 732 211 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 732 245 s homePos;
+#X obj 733 104 select 0;
+#X obj 826 102 select 1;
+#X obj 732 178 delay 30000;
+#X obj 786 36 r homePosX;
+#X obj 879 35 r homePosY;
+#N canvas 102 116 1099 846 dutyCycle 0;
+#X obj 668 59 r xPos;
+#X obj 736 58 r yPos;
+#X obj 668 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 446 328 + 1;
+#X obj 487 486 hsl 400 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 558 154 -0.000835;
+#X msg 446 156 0.00167;
+#X msg 485 296 0;
+#X obj 361 95 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 361 65 loadbang;
+#X obj 664 120 delay 4000;
+#X obj 39 479 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 485 650 s dutyCycle;
+#X obj 36 271 r dutyCycle;
+#X obj 36 442 line 0 100;
+#X msg 36 389 0 300000;
+#X obj 35 353 t b b, f 15;
+#X obj 150 315 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 130 388 1;
+#X msg 525 296 1;
+#X obj 485 262 loadbang;
+#X obj 486 528 * 100;
+#X obj 486 565 int;
+#X obj 485 615 nDiff;
+#X obj 36 314 select 100;
+#X obj 840 152 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 10 256;
+#X obj 840 363 s dutyCycleOn;
+#X obj 950 314 / 2;
+#X obj 950 363 s dutyCycleOff;
+#X obj 950 338 * -1;
+#X obj 838 96 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 446 64 r dutyCycleOn;
+#X obj 446 96 prepend set;
+#X obj 551 63 r dutyCycleOff;
+#X obj 554 109 prepend set;
+#X obj 485 591 nbx 5 14 0 100 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 484 330 nbx 5 14 0 1e+37 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 838 61 loadbang;
+#X msg 917 123 2;
+#X msg 881 123 1;
+#X msg 839 122 10;
+#X obj 181 513 select 0;
+#X obj 180 645 s motorCoolDownOff;
+#X msg 181 565 1;
+#X msg 234 563 0;
+#X obj 181 601 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 172 356 loadbang;
+#X msg 173 388 0;
+#X obj 586 650 outlet;
+#X obj 36 512 s motorCoolDown;
+#X obj 225 391 metro 2000;
+#X obj 263 357 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 361 125 metro 1000;
+#X obj 361 161 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 840 206 !/ 1;
+#X obj 840 270 * 0.0167;
+#X msg 446 223 -0.000835;
+#X obj 446 189 prepend set;
+#X msg 963 125 0.5;
+#X obj 127 602 s mcd;
+#X obj 758 123 r mcd;
+#X obj 669 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 2 0;
+#X connect 1 0 2 0;
+#X connect 2 0 6 0;
+#X connect 2 0 10 0;
+#X connect 3 0 36 0;
+#X connect 4 0 21 0;
+#X connect 5 0 57 0;
+#X connect 6 0 57 0;
+#X connect 7 0 36 0;
+#X connect 8 0 52 0;
+#X connect 9 0 8 0;
+#X connect 10 0 5 0;
+#X connect 10 0 61 0;
+#X connect 11 0 41 0;
+#X connect 11 0 49 0;
+#X connect 13 0 24 0;
+#X connect 14 0 11 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X connect 16 1 18 0;
+#X connect 17 0 16 0;
+#X connect 18 0 14 0;
+#X connect 19 0 36 0;
+#X connect 20 0 7 0;
+#X connect 21 0 22 0;
+#X connect 22 0 35 0;
+#X connect 23 0 12 0;
+#X connect 23 0 48 0;
+#X connect 24 0 16 0;
+#X connect 25 0 54 0;
+#X connect 27 0 29 0;
+#X connect 29 0 28 0;
+#X connect 30 0 40 0;
+#X connect 31 0 32 0;
+#X connect 32 0 6 0;
+#X connect 33 0 34 0;
+#X connect 34 0 5 0;
+#X connect 35 0 23 0;
+#X connect 36 0 3 1;
+#X connect 36 0 4 0;
+#X connect 37 0 30 0;
+#X connect 38 0 25 0;
+#X connect 39 0 25 0;
+#X connect 40 0 25 0;
+#X connect 41 0 43 0;
+#X connect 41 0 59 0;
+#X connect 41 1 44 0;
+#X connect 43 0 45 0;
+#X connect 44 0 45 0;
+#X connect 45 0 42 0;
+#X connect 46 0 47 0;
+#X connect 46 0 50 0;
+#X connect 47 0 14 0;
+#X connect 51 0 50 0;
+#X connect 52 0 53 0;
+#X connect 53 0 56 0;
+#X connect 54 0 55 0;
+#X connect 55 0 27 0;
+#X connect 55 0 26 0;
+#X connect 56 0 3 0;
+#X connect 57 0 56 0;
+#X connect 58 0 25 0;
+#X connect 60 0 5 0;
+#X restore 562 377 pd dutyCycle;
+#X obj 565 442 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 2 0 7 0;
@@ -82,3 +235,13 @@
 #X connect 29 0 32 0;
 #X connect 32 0 31 0;
 #X connect 33 0 30 0;
+#X connect 34 0 39 0;
+#X connect 35 0 40 0;
+#X connect 36 0 41 0;
+#X connect 37 0 38 0;
+#X connect 39 1 36 0;
+#X connect 40 1 36 0;
+#X connect 41 0 37 0;
+#X connect 42 0 39 1;
+#X connect 43 0 40 1;
+#X connect 44 0 45 0;
