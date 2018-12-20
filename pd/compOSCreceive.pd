@@ -1,4 +1,4 @@
-#N canvas 24 136 1716 912 10;
+#N canvas 23 142 1716 912 10;
 #X obj 7 23 udpreceive 1999;
 #X obj 9 59 unpackOSC;
 #X obj 7 90 routeOSC /rawDMX;
@@ -47,11 +47,11 @@
 1;
 #X obj 44 554 udpreceive 3334;
 #X obj 133 678 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 10 256;
+-262144 -1 -1 -27 256;
 #X obj 296 684 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 5 256;
+-262144 -1 -1 52 256;
 #X obj 136 634 routeOSC /x /y /xy;
-#X msg 365 679 10 5, f 25;
+#X msg 365 679 -27 52, f 25;
 #X obj 134 723 cyclone/scale -100 100 -0.5 0.5;
 #X obj 214 798 s xPos;
 #X obj 364 795 s yPos;
@@ -182,7 +182,7 @@
 #X connect 2 0 3 0;
 #X connect 3 0 1 0;
 #X restore 23 864 pd systemShutdown;
-#N canvas 2 65 1476 546 settings 0;
+#N canvas 2 71 1476 546 settings 1;
 #X obj 53 48 inlet;
 #X obj 53 107 routeOSC /autoEnabled;
 #X obj 72 220 s storeSetting;
@@ -224,6 +224,10 @@
 #X obj 1117 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1117 254 s sendSettings;
+#X obj 1281 168 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1283 97 routeOSC /clearDutyCycle;
+#X obj 1281 253 s clearDutyCycle;
 #X connect 0 0 1 0;
 #X connect 0 0 7 0;
 #X connect 0 0 11 0;
@@ -231,6 +235,7 @@
 #X connect 0 0 25 0;
 #X connect 0 0 28 0;
 #X connect 0 0 31 0;
+#X connect 0 0 35 0;
 #X connect 1 0 3 0;
 #X connect 3 0 14 0;
 #X connect 3 0 4 0;
@@ -257,12 +262,14 @@
 #X connect 30 0 20 0;
 #X connect 31 0 32 0;
 #X connect 32 0 33 0;
+#X connect 34 0 36 0;
+#X connect 35 0 34 0;
 #X restore 297 618 pd settings;
 #N canvas 22 204 1016 734 Settings 0;
 #X obj 65 572 outlet;
 #X obj 62 95 r automationEnabled;
 #X obj 111 143 r sendSettings;
-#X msg 94 247 1;
+#X msg 94 247 0;
 #X obj 96 202 prepend set;
 #X obj 62 299 prepend /autoEnabled;
 #X obj 112 177 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -280,7 +287,7 @@
 #X obj 429 177 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 577 144 r sendSettings;
-#X msg 560 248 60;
+#X msg 560 248 15;
 #X obj 562 203 prepend set;
 #X obj 578 178 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -290,7 +297,7 @@
 #X obj 734 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 892 141 r sendSettings;
-#X msg 875 245 2;
+#X msg 875 245 1;
 #X obj 877 200 prepend set;
 #X obj 893 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;

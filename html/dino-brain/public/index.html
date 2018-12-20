@@ -47,7 +47,14 @@
   			<div id="motorCoolDownProgressBar"></div>
 		</div>
 	</div>
-	<div id="pinwrapper"></div>
+	<div id="adminLoginPanel">
+		ADMIN LOGIN
+		<br>	
+		<div id="pinwrapper"></div>
+		<br>
+		<br>	
+		<button type="button" class="fullBtn" id="loginCancelBtn">CANCEL</button>
+	</div>
 	<div id="controlPanel" >	
 		<div>
 			<button type="button" class="fullBtn admin" id="recordBtn">RECORD</button>
@@ -106,7 +113,7 @@
 	<div id="settings" class='admin' style="width:300px; display: none;" class="fc">
 		<div class="divider"></div>
 
-		<span class="menuLabe">AUTOMATION:</span>
+		<span class="menuLabel">AUTOMATION:</span>
 			<select id="autoEnabledSelect" class="bigBtn fr">
 				<option value="0">DISABLED</option>
 				<option value="1">ENABLED</option>
@@ -196,6 +203,10 @@
 			</select>
 		</div>
 		<div class="divider"></div>
+		<div>
+			<button type="button" class="fullBtn" id="clearDutyCycleBtn">CLEAR DUTY CYCLE</button>
+		</div>
+		<div class="divider"></div>
 		<div >
 			<button type="button" class="fullBtn" id="systemShutdownBtn">SYSTEM SHUTDOWN</button>
 		</div>
@@ -203,6 +214,7 @@
 			<button type="button" class="bigBtn" id="systemShutdownConfBtn">SHUTDOWN</button>
 			<button type="button" class="bigBtn" id="systemShutdownCancBtn">CANCEL</button>
 		</div>
+		<div class="divider">	</div>
 
 	</div>
 

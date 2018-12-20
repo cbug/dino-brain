@@ -219,6 +219,12 @@ io.on('connection', (socket) => {
 
   });
 
+  socket.on('clearDutyCycle', (data) => {
+    
+    oscClient.send('/clearDutyCycle', data);
+
+  });
+
   socket.on('systemShutdown', (data) => {
     
     oscClient.send('/systemShutdown', data);

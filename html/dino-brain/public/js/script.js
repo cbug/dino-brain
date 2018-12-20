@@ -120,6 +120,10 @@ $(function($) {
         oscSend('nextSeq', 1);
     });
 
+    $('#clearDutyCycleBtn').click(function(){
+        oscSend('clearDutyCycle', 1);
+    });
+
     $('#prevSeqBtn').click(function(){
         oscSend('prevSeq', 1);
     });
@@ -170,15 +174,20 @@ $(function($) {
     });
 
     $('#adminBtn').click(function(){
-        $('#pinwrapper').show();
+        $('#adminLoginPanel').show();
         $('#pinwrapper').pinlogin({
                   fields : 4, // default 5,
                   complete: function(pin){
                     $('#pinwrapper').css('display', 'none');
+                    $("#adminLoginPanel").hide();
                     oscSend('adminPin', pin);
 
                   }
         });
+    });
+
+    $('#loginCancelBtn').click(function(){
+        $("#adminLoginPanel").hide();
     });
 
 
@@ -354,6 +363,7 @@ $(function($) {
 
                         $('#controlPanel').css('visibility', 'hidden');
                         $('#dutyCycle').css('visibility', 'hidden');
+                        $('#xyPad').hide();
                         $('#motorCoolDown').show();
                         var width = val*100;
 
@@ -368,6 +378,7 @@ $(function($) {
 
                 }else{
                     $('#motorCoolDown').hide();
+                    $('#xyPad').show();
                     $('#controlPanel').css('visibility', 'visible');
                     $('#dutyCycle').css('visibility', 'visible');
                     

@@ -1,4 +1,4 @@
-#N canvas 104 120 1094 846 10;
+#N canvas 102 132 1094 846 10;
 #X obj 47 81 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 12700 1;
 #X obj 114 208 hsl 128 15 -0.5 0.5 0 0 empty empty empty -2 -8 0 10
@@ -58,14 +58,14 @@
 #X obj 732 178 delay 30000;
 #X obj 786 36 r homePosX;
 #X obj 879 35 r homePosY;
-#N canvas 102 116 1099 846 dutyCycle 0;
+#N canvas 96 170 1099 846 dutyCycle 1;
 #X obj 668 59 r xPos;
 #X obj 736 58 r yPos;
 #X obj 668 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 446 328 + 1;
 #X obj 487 486 hsl 400 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 39034 1;
 #X msg 558 154 -0.000835;
 #X msg 446 156 0.00167;
 #X msg 485 296 0;
@@ -102,9 +102,9 @@
 #X obj 551 63 r dutyCycleOff;
 #X obj 554 109 prepend set;
 #X obj 485 591 nbx 5 14 0 100 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 0 256;
+-1 -1 97 256;
 #X obj 484 330 nbx 5 14 0 1e+37 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 0 256;
+-1 -1 0.978292 256;
 #X obj 838 61 loadbang;
 #X msg 917 123 2;
 #X msg 881 123 1;
@@ -119,9 +119,6 @@
 #X msg 173 388 0;
 #X obj 586 650 outlet;
 #X obj 36 512 s motorCoolDown;
-#X obj 225 391 metro 2000;
-#X obj 263 357 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
 #X obj 361 125 metro 1000;
 #X obj 361 161 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -134,19 +131,22 @@
 #X obj 758 123 r mcd;
 #X obj 669 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
+#X obj 177 291 r clearDutyCycle, f 19;
+#X obj 558 260 r clearDutyCycle, f 19;
+#X obj 282 564 s seqEnd;
 #X connect 0 0 2 0;
 #X connect 1 0 2 0;
 #X connect 2 0 6 0;
 #X connect 2 0 10 0;
 #X connect 3 0 36 0;
 #X connect 4 0 21 0;
-#X connect 5 0 57 0;
-#X connect 6 0 57 0;
+#X connect 5 0 55 0;
+#X connect 6 0 55 0;
 #X connect 7 0 36 0;
-#X connect 8 0 52 0;
+#X connect 8 0 50 0;
 #X connect 9 0 8 0;
 #X connect 10 0 5 0;
-#X connect 10 0 61 0;
+#X connect 10 0 59 0;
 #X connect 11 0 41 0;
 #X connect 11 0 49 0;
 #X connect 13 0 24 0;
@@ -163,7 +163,7 @@
 #X connect 23 0 12 0;
 #X connect 23 0 48 0;
 #X connect 24 0 16 0;
-#X connect 25 0 54 0;
+#X connect 25 0 52 0;
 #X connect 27 0 29 0;
 #X connect 29 0 28 0;
 #X connect 30 0 40 0;
@@ -179,27 +179,39 @@
 #X connect 39 0 25 0;
 #X connect 40 0 25 0;
 #X connect 41 0 43 0;
-#X connect 41 0 59 0;
+#X connect 41 0 57 0;
 #X connect 41 1 44 0;
+#X connect 41 1 62 0;
 #X connect 43 0 45 0;
 #X connect 44 0 45 0;
 #X connect 45 0 42 0;
 #X connect 46 0 47 0;
-#X connect 46 0 50 0;
 #X connect 47 0 14 0;
-#X connect 51 0 50 0;
+#X connect 50 0 51 0;
+#X connect 51 0 54 0;
 #X connect 52 0 53 0;
-#X connect 53 0 56 0;
-#X connect 54 0 55 0;
-#X connect 55 0 27 0;
-#X connect 55 0 26 0;
-#X connect 56 0 3 0;
-#X connect 57 0 56 0;
-#X connect 58 0 25 0;
-#X connect 60 0 5 0;
+#X connect 53 0 27 0;
+#X connect 53 0 26 0;
+#X connect 54 0 3 0;
+#X connect 55 0 54 0;
+#X connect 56 0 25 0;
+#X connect 58 0 5 0;
+#X connect 60 0 47 0;
+#X connect 61 0 7 0;
 #X restore 562 377 pd dutyCycle;
 #X obj 565 442 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 12319 1;
+#X obj 804 336 r yPos;
+#X obj 883 335 r xPos;
+#X obj 803 373 nDiff;
+#X obj 883 374 nDiff;
+#X obj 808 415 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 808 518 s motorsOn;
+#X msg 808 465 1;
+#X obj 887 437 delay 10000;
+#X msg 887 473 0;
+#X obj 337 359 r homePos;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 2 0 7 0;
@@ -245,3 +257,12 @@
 #X connect 42 0 39 1;
 #X connect 43 0 40 1;
 #X connect 44 0 45 0;
+#X connect 46 0 48 0;
+#X connect 47 0 49 0;
+#X connect 48 0 50 0;
+#X connect 49 0 50 0;
+#X connect 50 0 52 0;
+#X connect 50 0 53 0;
+#X connect 52 0 51 0;
+#X connect 53 0 54 0;
+#X connect 54 0 51 0;
